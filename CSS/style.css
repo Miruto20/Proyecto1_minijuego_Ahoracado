@@ -1,0 +1,45 @@
+body {
+  background: url(/IMG/fondoAhorcadoFav.jpg) no-repeat center;
+  background-size: 100%;
+  text-align: center;
+}
+
+header {
+  background: grey;
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  margin: 0;
+  color: white;
+}
+
+.imagenA {
+  display: none;
+}
+.imagenA-1 {
+  clip-path: ellipse(100px 95px at 15% 25%);
+}
+
+.imagenA-2 {
+  clip-path: ellipse(100px 95px at 50% 25%);
+}
+.imagenA-3 {
+  clip-path: ellipse(100px 95px at 80% 25%);
+}
+.imagenA-4 {
+  clip-path: ellipse(100px 95px at 15% 75%);
+}
+.imagenA-5 {
+  clip-path: ellipse(100px 95px at 50% 75%);
+}
+.imagenA-6 {
+  clip-path: ellipse(100px 95px at 81% 75%);
+}
+.ganaste {
+  text-decoration: red solid 2px underline;
+  color: 2px solid red;
+  font-size: 42.5px;
+  font-weight: bold;
+}

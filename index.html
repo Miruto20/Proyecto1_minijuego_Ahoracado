@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/CSS/style.css" />
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="./CSS/style.css" /> -->
+  </head>
+  <body>
+    <script type="module" src="/JS/ahorcado.js"></script>
+    <header><h1>Ahorcado</h1></header>
+    <form name="letras">
+      <fieldset>
+        <legend>Prueba tu suerte</legend>
+        <label for="letra">Introduce una letra </label>
+        <input
+          type="text"
+          id="letra"
+          name="letra"
+          maxlength="1º"
+          placeholder="prueba una letra"
+          required
+          autofocus
+        />
+
+        <button id="add" type="submit">Probar letra</button>
+      </fieldset>
+    </form>
+    <div>
+      <p id="output"></p>
+      <p id="intentos"></p>
+      <p id="fallos"></p>
+      <p class="ganaste"></p>
+    </div>
+    <picture>
+      <img
+        src="/IMG/Screenshot from 2022-11-15 13-02-35.png"
+        alt="moricion"
+        class="imagenA"
+      />
+    </picture>
+  </body>
+</html>
