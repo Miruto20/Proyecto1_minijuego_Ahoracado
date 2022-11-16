@@ -1,87 +1,144 @@
 "use strict";
-const palabrasEasy = [
-  "gato",
-  "perro",
-  "luna",
-  "sol",
-  "pizza",
-  "sandia",
-  "futbol",
-  "boxeo",
-  "pagina",
-  "raton",
-  "coche",
-  "macaco",
-];
-const laPalabra = palabrasEasy[Math.floor(Math.random() * palabrasEasy.length)];
-let laPalabraGuion = laPalabra.replace(/./g, "_ ");
-let botonLetra = document.querySelector("#letra");
-let contadorFallos = 0;
-let historialLetras = [];
-let pIntentos = document.querySelector("#intentos");
-const letra = console.log(laPalabra);
+
+import palabrasEasy from "./palabras.js";
+
+const pIntentos = document.querySelector("#intentos");
+const outputElement = document.querySelector("#output");
+const fallosElement = document.querySelector("#fallos");
 const formElement = document.forms.letras;
 const letraElement = formElement.elements.letra;
-console.log(letraElement);
-document.querySelector("#add").addEventListener("click", () => {
+const resetButtonElement = document.querySelector("#reset");
+const ganasteElemento = document.querySelector(".ganaste");
+const imgElement = document.querySelector("img");
+const vicElement = document.querySelector("#victorias");
+
+let contadorFallos;
+let historialLetras;
+let laPalabritaGuion;
+let laPalabritaArray;
+let laPalabritaArrayGuion;
+let laPalabra;
+let historialVictorias = 0;
+
+function main() {
+  //reseteo
+  contadorFallos = 0;
+  historialLetras = [];
+  laPalabritaGuion = "";
+  ganasteElemento.innerHTML = ``;
+  laPalabra = palabrasEasy[Math.floor(Math.random() * palabrasEasy.length)];
+  console.log(laPalabra);
+  laPalabritaArray = [...laPalabra];
+  laPalabritaGuion = laPalabra.replace(/./g, "_");
+  imgElement.setAttribute(
+    `src`,
+    `/PruebasJMD/Proyectos/01Proy_Ahorcado/Imagenes/Horca1.png`
+  );
+
+  laPalabritaArrayGuion = [...laPalabritaGuion];
+
+  outputElement.innerHTML = laPalabritaArrayGuion.join(" ");
+  pIntentos.innerHTML = `Fallos ${contadorFallos}/6`;
+  fallosElement.innerHTML = `Letras falladas: ${historialLetras}`;
+  vicElement.innerHTML = `Victorias: ${historialVictorias}`;
+}
+
+formElement.addEventListener("submit", (e) => {
+  e.preventDefault();
   let letra = document.querySelector("#letra").value;
-  let fallo = true;
-  for (const i in laPalabra) {
-    if (letra == laPalabra[i]) {
-      console.log("Acertaste la letra");
-      laPalabraGuion = laPalabraGuion.replace(laPalabraGuion[i * 2], letra);
-      fallo = false;
+  /* if (
+    letra != "a" ||
+    "b" ||
+    "c" ||
+    "d" ||
+    "e" ||
+    "f" ||
+    "g" ||
+    "h" ||
+    "i" ||
+    "j" ||
+    "k" ||
+    "l" ||
+    "m" ||
+    "n" ||
+    "ñ" ||
+    "o" ||
+    "p" ||
+    "q" ||
+    "r" ||
+    "s" ||
+    "t" ||
+    "u" ||
+    "v" ||
+    "w" ||
+    "x" ||
+    "y" ||
+    "z" ||
+    historialLetras.includes(letra)
+  ) {
+    console.log("usa español no cirilico");
+  } */
+  for (let i of laPalabritaArray) {
+    let posicionI = laPalabritaArray.indexOf(i, 0);
+
+    if (letra == i) {
+      laPalabritaArrayGuion[posicionI] = letra;
+
+      laPalabritaArray[posicionI] = null;
     }
   }
   if (!laPalabra.includes(letra)) {
     contadorFallos++;
     historialLetras.push(letra);
-
     switch (contadorFallos) {
       case 1:
-        document.querySelector("img").classList.replace("imagenA", "imagenA-1");
+        imgElement.setAttribute(`src`, `/IMG/Horca2.png`);
+
         break;
       case 2:
-        document
-          .querySelector("img")
-          .classList.replace("imagenA-1", "imagenA-2");
+        imgElement.setAttribute(`src`, `/IMG/Horca3.png`);
+
         break;
       case 3:
-        document
-          .querySelector("img")
-          .classList.replace("imagenA-2", "imagenA-3");
-        break;
+        imgElement.setAttribute(`src`, `/IMG/Horca4.png`);
+
       case 4:
-        document
-          .querySelector("img")
-          .classList.replace("imagenA-3", "imagenA-4");
+        imgElement.setAttribute(`src`, `/IMG/Horca5.png`);
+
         break;
       case 5:
-        document
-          .querySelector("img")
-          .classList.replace("imagenA-4", "imagenA-5");
+        imgElement.setAttribute(`src`, `/IMG/Horca6.png`);
+
         break;
       case 6:
-        document
-          .querySelector("img")
-          .classList.replace("imagenA-5", "imagenA-6");
+        imgElement.setAttribute(`src`, `/IMG/Horca7.png`);
 
         break;
     }
   }
   if (contadorFallos > 5) {
-    alert("A LA HORCA!!!");
+    ganasteElemento.textContent = "P E R DIES T E";
+    historialVictorias = 0;
   }
+
+  outputElement.innerHTML = laPalabritaArrayGuion.join(" ");
   pIntentos.innerHTML = `Fallos ${contadorFallos}/6`;
-  document.querySelector("#output").innerHTML = laPalabraGuion;
-  document.querySelector(
-    "#fallos"
-  ).innerHTML = `Letras falladas ${historialLetras}`;
+  fallosElement.innerHTML = `Letras falladas: ${historialLetras}`;
+  vicElement.innerHTML = `Victorias: ${historialVictorias}`;
+
   letraElement.value = "";
 
-  //añado If para el caso de ganar, esto es, la palabracon guiones es ahora igual que la palabra
-  if (!laPalabraGuion.includes("_")) {
+  if (!laPalabritaArrayGuion.includes("_")) {
     console.log("ganaste");
-    document.querySelector(".ganaste").textContent += "G A N A S T E ";
+    ganasteElemento.textContent = "G A N A S T E ";
+    historialVictorias++;
+    console.log(historialVictorias);
+    vicElement.innerHTML = `Victorias: ${historialVictorias}`;
   }
 });
+
+resetButtonElement.addEventListener("click", () => {
+  main();
+});
+
+main();

@@ -15,9 +15,9 @@ h1 {
   color: white;
 }
 
-.imagenA {
-  display: none;
-}
+/* .imagenA {
+    display: none;
+  } */
 .imagenA-1 {
   clip-path: ellipse(100px 95px at 15% 25%);
 }
@@ -42,4 +42,13 @@ h1 {
   color: 2px solid red;
   font-size: 8rem;
   font-weight: bold;
+}
+#output {
+  font-size: 2.5rem;
+}
+#intentos {
+  font-size: 2.5rem;
+}
+#fallos {
+  font-size: 2.5;
 }
