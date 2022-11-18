@@ -9,8 +9,11 @@ const formElement = document.forms.letras;
 const letraElement = formElement.elements.letra;
 const resetButtonElement = document.querySelector("#reset");
 const ganasteElemento = document.querySelector(".ganaste");
-const imgElement = document.querySelector("img");
+// const imgElement = document.querySelector("img");
+const bodyElement = document.querySelector(".body1");
 const vicElement = document.querySelector("#victorias");
+const NoWinElement = document.querySelector(".none");
+const loseElement = document.querySelector(".none1");
 
 let contadorFallos;
 let historialLetras;
@@ -30,54 +33,32 @@ function main() {
   console.log(laPalabra);
   laPalabritaArray = [...laPalabra];
   laPalabritaGuion = laPalabra.replace(/./g, "_");
-  imgElement.setAttribute(
-    `src`,
-    `/PruebasJMD/Proyectos/01Proy_Ahorcado/Imagenes/Horca1.png`
-  );
+  if (NoWinElement.classList.contains("noGanasteAun")) {
+    NoWinElement.classList.replace("noGanasteAun", "none");
+  }
+  if (loseElement.classList.contains("noGanasteAun1")) {
+    loseElement.classList.replace("noGanasteAun1", "none1");
+  }
+  // bodyElement.setAttribute(
+  //   `background:`,
+  //   `url(/IMG/ImgFondoFavo.jpg) no-repeat center`
+  // );
+  let nombreClase = bodyElement.classList;
+  console.log(nombreClase);
+  bodyElement.classList.replace(nombreClase, "body1");
 
   laPalabritaArrayGuion = [...laPalabritaGuion];
 
   outputElement.innerHTML = laPalabritaArrayGuion.join(" ");
-  pIntentos.innerHTML = `Fallos ${contadorFallos}/6`;
-  fallosElement.innerHTML = `Letras falladas: ${historialLetras}`;
+  pIntentos.innerHTML = `FALLOS ${contadorFallos}/6 `;
+  fallosElement.innerHTML = `LETRAS FALLADAS: ${historialLetras}`;
   vicElement.innerHTML = `Victorias: ${historialVictorias}`;
 }
 
 formElement.addEventListener("submit", (e) => {
   e.preventDefault();
   let letra = document.querySelector("#letra").value;
-  /* if (
-    letra != "a" ||
-    "b" ||
-    "c" ||
-    "d" ||
-    "e" ||
-    "f" ||
-    "g" ||
-    "h" ||
-    "i" ||
-    "j" ||
-    "k" ||
-    "l" ||
-    "m" ||
-    "n" ||
-    "ñ" ||
-    "o" ||
-    "p" ||
-    "q" ||
-    "r" ||
-    "s" ||
-    "t" ||
-    "u" ||
-    "v" ||
-    "w" ||
-    "x" ||
-    "y" ||
-    "z" ||
-    historialLetras.includes(letra)
-  ) {
-    console.log("usa español no cirilico");
-  } */
+
   for (let i of laPalabritaArray) {
     let posicionI = laPalabritaArray.indexOf(i, 0);
 
@@ -92,48 +73,56 @@ formElement.addEventListener("submit", (e) => {
     historialLetras.push(letra);
     switch (contadorFallos) {
       case 1:
-        imgElement.setAttribute(`src`, `/IMG/Horca2.png`);
-
+        // imgElement.setAttribute(`src`, `/IMG/Horca2.png`);
+        bodyElement.classList.replace("body1", "body2");
         break;
       case 2:
-        imgElement.setAttribute(`src`, `/IMG/Horca3.png`);
+        bodyElement.classList.replace("body2", "body3");
 
+        // imgElement.setAttribute(`src`, `/IMG/Horca3.png`);
         break;
       case 3:
-        imgElement.setAttribute(`src`, `/IMG/Horca4.png`);
+        bodyElement.classList.replace("body3", "body4");
 
+        // imgElement.setAttribute(`src`, `/IMG/Horca4º.png`);
+        break;
       case 4:
-        imgElement.setAttribute(`src`, `/IMG/Horca5.png`);
+        bodyElement.classList.replace("body4", "body5");
 
+        // imgElement.setAttribute(`src`, `/IMG/Horca5.png`);
         break;
       case 5:
-        imgElement.setAttribute(`src`, `/IMG/Horca6.png`);
+        bodyElement.classList.replace("body5", "body6");
 
+        // imgElement.setAttribute(`src`, `/IMG/Horca6.png`);
         break;
       case 6:
-        imgElement.setAttribute(`src`, `/IMG/Horca7.png`);
+        bodyElement.classList.replace("body6", "body7");
 
+        // imgElement.setAttribute(`src`, `/IMG/Horca7.png`);
         break;
     }
   }
   if (contadorFallos > 5) {
-    ganasteElemento.textContent = "P E R DIES T E";
+    ganasteElemento.textContent = "PERDISTE";
     historialVictorias = 0;
+    loseElement.classList.replace("none1", "noGanasteAun1");
   }
 
   outputElement.innerHTML = laPalabritaArrayGuion.join(" ");
-  pIntentos.innerHTML = `Fallos ${contadorFallos}/6`;
-  fallosElement.innerHTML = `Letras falladas: ${historialLetras}`;
+  pIntentos.innerHTML = `FALLOS ${contadorFallos}/6`;
+  fallosElement.innerHTML = `LETRAS FALLADAS: ${historialLetras}`;
   vicElement.innerHTML = `Victorias: ${historialVictorias}`;
 
   letraElement.value = "";
 
   if (!laPalabritaArrayGuion.includes("_")) {
     console.log("ganaste");
-    ganasteElemento.textContent = "G A N A S T E ";
+    ganasteElemento.textContent = "GANASTE";
     historialVictorias++;
     console.log(historialVictorias);
     vicElement.innerHTML = `Victorias: ${historialVictorias}`;
+    NoWinElement.classList.replace("none", "noGanasteAun");
   }
 });
 

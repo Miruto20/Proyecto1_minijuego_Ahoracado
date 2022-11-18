@@ -1,24 +1,58 @@
+@font-face {
+  font-family: gallowTree;
+  src: url("GallowTree-Regular.otf"); /* Añadi fuente */
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 body {
-  background: url(/IMG/fondoAhorcadoFav.jpg) no-repeat center;
-  background-size: 100%;
+  background: url(/IMG/ImgFondoFavo.jpg) no-repeat center; /* cambie foto */
+  background-size: 50;
   text-align: center;
+  min-height: 80%;
+}
+fieldset > legend {
+  color: aliceblue;
+  font-weight: bold;
 }
 
-header {
-  background: grey;
-  text-align: center;
-  padding: 20px;
+body.body1 {
+  background: url(/IMG/ImgFondoFavo.jpg) no-repeat center; /* cambie foto */
 }
 
+body.body2 {
+  background: url(/IMG/ImgFondoFallo1.jpg) no-repeat center; /* cambie foto */
+}
+body.body3 {
+  background: url(/IMG/ImgFondoFallo2.jpg) no-repeat center; /* cambie foto */
+}
+body.body4 {
+  background: url(/IMG/ImgFondoFallo3.jpg) no-repeat center; /* cambie foto */
+}
+body.body5 {
+  background: url(/IMG/ImgFondoFallo4.jpg) no-repeat center; /* cambie foto */
+}
+body.body6 {
+  background: url(/IMG/ImgFondoFallo5.jpg) no-repeat center; /* cambie foto */
+}
+body.body7 {
+  background: url(/IMG/ImgFondoFallo6.jpg) no-repeat center; /* cambie foto */
+}
 h1 {
   margin: 0;
-  color: white;
+  color: rgb(202, 31, 31);
+  font-family: gallowTree; /* Añadi fuente y color */
+  font-size: 4rem; /* Añadi tamaño */
+  text-align: center;
+  padding: 5px;
 }
 
 /* .imagenA {
     display: none;
   } */
-.imagenA-1 {
+/* .imagenA-1 {
   clip-path: ellipse(100px 95px at 15% 25%);
 }
 
@@ -36,19 +70,135 @@ h1 {
 }
 .imagenA-6 {
   clip-path: ellipse(100px 95px at 81% 75%);
-}
+} */
 .ganaste {
-  text-decoration: red solid 2px underline;
-  color: 2px solid red;
-  font-size: 8rem;
+  font-family: gallowTree;
+  text-decoration: rgb(202, 31, 31) solid 2px underline;
+  color: rgb(202, 31, 31);
+  font-size: 3rem;
   font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0;
 }
 #output {
   font-size: 2.5rem;
+  color: rgb(46, 66, 88);
+  margin-top: 10rem;
+  margin-bottom: 0;
+  color: aliceblue;
 }
 #intentos {
-  font-size: 2.5rem;
+  font-family: gallowTree;
+
+  color: rgb(202, 31, 31);
+  font-size: 20px;
+  margin-top: 0;
 }
 #fallos {
-  font-size: 2.5;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: rgb(202, 31, 31);
+}
+.fieldset {
+  display: flex;
+  flex-direction: column;
+  max-width: 280px;
+  margin: 0 auto;
+  border: none;
+}
+#letra {
+  text-align: center;
+  padding-top: 1rem;
+  color: aliceblue;
+  display: flex;
+  flex-direction: row;
+  text-size-adjust: 3rem;
+  background-color: rgba(255, 255, 255, 0.5);
+  font-size: 1.5rem;
+}
+#botones {
+  display: flex;
+  justify-content: space-between;
+}
+#add {
+  margin-top: 0.4rem;
+  max-width: 150px;
+  background-color: rgba(123, 122, 222, 0);
+  border: none;
+  font-family: gallowTree;
+  color: rgb(96, 10, 10);
+  text-decoration: red 2px solid;
+  font-weight: bold;
+}
+#reset {
+  margin-top: 0.4rem;
+  max-width: 150px;
+  background-color: rgba(123, 122, 222, 0);
+  border: none;
+  font-family: gallowTree;
+  color: rgb(96, 10, 10);
+  text-decoration: red 2px solid;
+  font-weight: bold;
+}
+#victorias {
+  font-weight: bold;
+  color: gold;
+}
+
+footer {
+  position: absolute;
+  bottom: 1rem;
+  left: 4rem;
+  right: 4rem;
+}
+
+@keyframes trofeo {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.5);
+  }
+}
+.none {
+  display: none;
+}
+.noGanasteAun {
+  animation-name: trofeo;
+  animation-duration: 1s;
+  animation-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+  animation-direction: alternate;
+  animation-iteration-count: 8;
+
+  margin: 0 auto;
+
+  width: 100px;
+  height: 100px;
+}
+
+@keyframes skull {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.5);
+  }
+}
+.none1 {
+  display: none;
+}
+
+.noGanasteAun1 {
+  animation-name: skull;
+  animation-duration: 1s;
+  animation-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+  animation-direction: alternate;
+  animation-iteration-count: 8;
+
+  margin: 0 auto;
+
+  width: 100px;
+  height: 100px;
 }
