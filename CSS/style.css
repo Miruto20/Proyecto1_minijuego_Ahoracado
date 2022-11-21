@@ -149,9 +149,11 @@ h1 {
   font-weight: bold;
 }
 #add {
+  border-radius: 25%;
+
   margin-top: 0.4rem;
   max-width: 150px;
-  background-color: rgba(123, 122, 222, 0);
+  background-color: rgba(213, 213, 238, 0.65);
   border: none;
   font-family: gallowTree;
   color: rgb(96, 10, 10);
@@ -251,5 +253,11 @@ footer {
   }
   .noGanasteAun1 {
     left: 46%;
+  }
+}
+
+@media (max-height: 580px) {
+  footer > p {
+    display: none;
   }
 }
