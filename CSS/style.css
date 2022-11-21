@@ -176,9 +176,10 @@ h1 {
 /* Creamos el footer con nuestros datos y lo fijamos al pie de pagina */
 footer {
   position: absolute;
-  bottom: 1rem;
+  bottom: 0.3rem;
   left: 4rem;
   right: 4rem;
+  font-size: small;
 }
 
 /* Creamos las dos animaciones de victoria y derrota, las ocultamos en un parrafo y las mostramos y damos vida al ganar o perder */
