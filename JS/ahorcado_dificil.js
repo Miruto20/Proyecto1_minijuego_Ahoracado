@@ -61,6 +61,7 @@ function main() {
 formElement.addEventListener("submit", (e) => {
   e.preventDefault();
   let letra = document.querySelector("#letra").value;
+  letra = letra.toLowerCase();
 
   for (let i of laPalabritaArray) {
     let posicionI = laPalabritaArray.indexOf(i, 0);
