@@ -133,3 +133,8 @@ main();
 popButtonElement.addEventListener("click", () => {
   popPElemento.textContent = `${laPalabra.pista1}`;
 });
+document.getElementById("letra").addEventListener("keyup", function (e) {
+  if (e.code === "Enter") {
+    document.getElementById("add").click();
+  }
+});

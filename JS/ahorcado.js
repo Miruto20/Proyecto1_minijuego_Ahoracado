@@ -67,9 +67,7 @@ function main() {
 formElement.addEventListener("submit", (e) => {
   e.preventDefault();
   let letra = document.querySelector("#letra").value;
-  console.log(letra);
   letra = letra.toLowerCase();
-  console.log(letra);
   //creamos un loop para compararla con la palabritArray y comparar que sean o no iguales y asi luego sustituirla en la posicionI equivalente al acierto en laPalabritaArrayGuion (la mostrada)
   for (let i of laPalabritaArray) {
     let posicionI = laPalabritaArray.indexOf(i, 0);
@@ -144,4 +142,11 @@ main();
 //boton para solicitar una pista y su funcionamiento.
 popButtonElement.addEventListener("click", () => {
   popPElemento.textContent = `${laPalabra.pista1}`;
+});
+
+//añadimos funcionalidad a la tecla Enter de envio
+document.getElementById("letra").addEventListener("keyup", function (e) {
+  if (e.code === "Enter") {
+    document.getElementById("add").click();
+  }
 });
